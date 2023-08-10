@@ -1,6 +1,5 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
-// https://github.com/projectsophon/hardhat-circom
 import "hardhat-circom";
 // circuits
 import circuits = require('./circuits.config.json')
@@ -10,6 +9,7 @@ process.env.BASE_PATH = __dirname;
 
 // tasks
 import "./tasks/newcircuit.ts"
+import 'dotenv/config';
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -22,6 +22,13 @@ const config: HardhatUserConfig = {
       }
     ]
   },
+  networks:{
+    mumbai: {
+      url: `https://rpc-mumbai.maticvigil.com`,
+      accounts: [process.env.PRIVATE_KEY]
+    }
+  },
+  
   circom: {
     // (optional) Base path for input files, defaults to `./circuits/`
     inputBasePath: "./circuits",

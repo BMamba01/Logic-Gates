@@ -82,7 +82,7 @@ async function main() {
   //@ts-ignore
   const tx = await verifier.verifyProof(pi_a, pi_b, pi_c, input)
   
-  console.log(`Verifier result: ${tx}`)
+  console.log(`Circuit Verification Successful: ${tx}`)
   console.assert(tx == true, "Proof verification failed!");
 
   process.exit(0);
